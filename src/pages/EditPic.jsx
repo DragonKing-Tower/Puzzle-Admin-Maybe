@@ -1,7 +1,7 @@
 import React from "react";
 
 function EditPic(){
-    return()
+    return <></>;
 }
 
 export default EditPic

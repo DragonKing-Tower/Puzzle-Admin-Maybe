@@ -1,7 +1,9 @@
 import React from "react";
 
 function Puzzle(){
-    return()
+    return(
+        <></>
+    )
 }
 
 export default Puzzle

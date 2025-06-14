@@ -1,7 +1,7 @@
 import React from "react";
 
 function Pic(){
-    return()
+    return <></>;
 }
 
 export default Pic
