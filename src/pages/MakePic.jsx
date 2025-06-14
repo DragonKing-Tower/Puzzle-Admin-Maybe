@@ -4,8 +4,11 @@ import { useOutletContext } from "react-router-dom";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Box, Button, TextField } from "@mui/material";
+import useGoBack from "../useGoBack";
+import handleFetch from "../handleFetch";
 
 function MakePic({ admin }) {
+    const goBack = useGoBack()
 	useAdminCheck(admin);
 	const { filteredPieces, setPieces } = useOutletContext();
 	const [newPic, setnewPic] = useState({
@@ -14,32 +17,6 @@ function MakePic({ admin }) {
 		description: "",
 		image: "",
 	});
-
-	async function handleSubmit(e) {
-		e.preventDefault();
-		if (!Object.values(newPic).some((value) => value.trim() === "")) {
-			try {
-				const result = await fetch("http://localhost:5000/pictures", {
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify(newPic),
-				});
-				const data = await result.json();
-				setPieces((prevPec) => [...prevPec, data]);
-			} catch (error) {
-				console.log("Error", error);
-			} finally {
-				setnewPic({
-					id: uuidv4(), //this is why I can't make it a use hook
-					name: "",
-					description: "",
-					image: "",
-				});
-			}
-		}
-	}
 
 	function handleChange(e) {
 		setnewPic((prevPec) => ({
@@ -51,7 +28,7 @@ function MakePic({ admin }) {
 	return (
 		<Box>
             <h2>Make New Pic</h2>
-			<form onSubmit={handleSubmit}>
+			<form onSubmit={(e)=>handleFetch(e,newPic,"POST",setPieces,goBack)}>
 				<TextField
 					name="name"
 					value={newPic.name}
