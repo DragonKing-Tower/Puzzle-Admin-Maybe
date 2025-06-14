@@ -26,7 +26,7 @@ function App() {
 						</Route>
 						<Route path="makepic" element={<MakePic />} />
 					</Route>
-					<Route path="/login" element={<Login />} />
+					<Route path="/login" element={<Login setAdmin={setAdmin}/>} />
 				</Routes>
 			</BrowserRouter>
 		</>
