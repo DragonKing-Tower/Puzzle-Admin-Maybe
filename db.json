@@ -1,0 +1,9 @@
+{
+	"pictures": [
+		{ "id": 1, "name": "Leaves" },
+		{ "id": 2, "name": "Onion" },
+		{ "id": 3, "name": "Turnip" },
+		{ "id": 4, "name": "Lettuce" },
+		{ "id": 5, "name": "Raffelsia" }
+	]
+}
