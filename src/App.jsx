@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
 import Puzzle from "./pages/Puzzle";
-import Search from "./pages/Search";
 import Pic from "./pages/Pic";
 import EditPic from "./pages/EditPic";
 import MakePic from "./pages/MakePic";

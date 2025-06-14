@@ -1,6 +1,8 @@
 import React from "react";
+import useAdminCheck from "../useAdminCheck";
 
-function EditPic(){
+function EditPic({admin}){
+    useAdminCheck(admin)
     return <></>;
 }
 

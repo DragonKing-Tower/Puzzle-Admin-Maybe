@@ -26,13 +26,11 @@ function Puzzle() {
 
 	useEffect(() => {
 		if (search) {
-			setFilteredPieces(() => {
-				pieces.filter((piece) => {
-					return piece.name
-						.toLowerCase()
-						.includes(search.toLowerCase());
-				});
-			});
+			setFilteredPieces(
+				pieces.filter((piece) =>
+					piece.name.toLowerCase().includes(search.toLowerCase())
+				)
+			);
 		} else {
 			setFilteredPieces(pieces);
 		}
@@ -54,7 +52,7 @@ function Puzzle() {
 					borderColor: "divider",
 					padding: 2,
 					boxSizing: "border-box",
-                    backgroundColor: "orange",
+					backgroundColor: "orange",
 				}}
 			>
 				<Search setSearch={setSearch} />
@@ -67,7 +65,7 @@ function Puzzle() {
 				}}
 			>
 				<PuzzleList filteredPieces={filteredPieces} />
-				<Outlet context={{ filteredPieces, setSearch }} />
+				<Outlet context={{ filteredPieces, setSearch, setPieces }} />
 			</Box>
 		</Box>
 	);

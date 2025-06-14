@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-function useAdminGuard(admin) {
+function useAdminCheck(admin) {
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -11,4 +11,4 @@ function useAdminGuard(admin) {
 	}, [admin, navigate]);
 }
 
-export default useAdminGuard;
+export default useAdminCheck;
