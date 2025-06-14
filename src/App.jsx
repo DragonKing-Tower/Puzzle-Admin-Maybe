@@ -10,7 +10,6 @@ import MakePic from "./pages/MakePic";
 import Login from "./pages/Login";
 import NavBar from "./NavBar";
 
-
 function App() {
 	const [admin, setAdmin] = useState(false);
 
@@ -22,11 +21,20 @@ function App() {
 					<Route path="/" element={<Home />} />
 					<Route path="/puzzle" element={<Puzzle />}>
 						<Route path=":id" element={<Pic />}>
-							<Route path="change" element={<EditPic />} />
+							<Route
+								path="change"
+								element={<EditPic admin={admin} />}
+							/>
 						</Route>
-						<Route path="makepic" element={<MakePic />} />
+						<Route
+							path="makepic"
+							element={<MakePic admin={admin} />}
+						/>
 					</Route>
-					<Route path="/login" element={<Login setAdmin={setAdmin}/>} />
+					<Route
+						path="/login"
+						element={<Login setAdmin={setAdmin} />}
+					/>
 				</Routes>
 			</BrowserRouter>
 		</>

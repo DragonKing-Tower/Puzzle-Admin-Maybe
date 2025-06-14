@@ -5,7 +5,10 @@ function Pic() {
 	const { id } = useParams();
 	const { filteredPieces, setSearch } = useOutletContext();
 	const peice = filteredPieces.find((peice) => peice.id === id);
-	console.log(peice);
+
+	if (!peice) {
+		return <p>Loading or invalid picture ID.</p>;
+	}
 
 	return (
 		<>
