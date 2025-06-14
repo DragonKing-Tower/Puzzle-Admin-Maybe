@@ -1,15 +1,16 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import PuzzleList from "./PuzzleList";
 import Search from "./Search";
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 
 function Puzzle() {
 	const [pieces, setPieces] = useState([]);
 	const [filteredPieces, setFilteredPieces] = useState([]);
 	const [search, setSearch] = useState("");
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		async function getPieces() {
@@ -35,6 +36,10 @@ function Puzzle() {
 			setFilteredPieces(pieces);
 		}
 	}, [pieces, search]);
+
+	function handleClick() {
+		navigate("/puzzle/makepic");
+	}
 
 	return (
 		<Box
@@ -65,7 +70,10 @@ function Puzzle() {
 				}}
 			>
 				<PuzzleList filteredPieces={filteredPieces} />
-				<Outlet context={{ filteredPieces, setSearch, setPieces }} />
+				<Outlet context={{ filteredPieces, setPieces }} />
+				<Button onClick={handleClick} variant="contained">
+					Make New Puzzle Piece
+				</Button>
 			</Box>
 		</Box>
 	);
