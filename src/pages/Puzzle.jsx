@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import PuzzleList from "./PuzzleList";
+import Search from "./Search";
+import { Box } from "@mui/material";
 
 function Puzzle() {
 	const [pieces, setPieces] = useState([]);
@@ -37,10 +39,37 @@ function Puzzle() {
 	}, [pieces, search]);
 
 	return (
-		<div>
-            <PuzzleList filteredPieces={filteredPieces}/>
-			<Outlet context={{ filteredPieces, setSearch }} />
-		</div>
+		<Box
+			sx={{
+				display: "flex",
+				height: "80vh",
+				justifyContent: "flex-start",
+				alignItems: "center",
+			}}
+		>
+			<Box
+				sx={{
+					width: 300,
+					borderRight: 1,
+					borderColor: "divider",
+					padding: 2,
+					boxSizing: "border-box",
+                    backgroundColor: "orange",
+				}}
+			>
+				<Search setSearch={setSearch} />
+			</Box>
+			<Box
+				sx={{
+					flex: 1,
+					padding: 2,
+					overflowY: "auto",
+				}}
+			>
+				<PuzzleList filteredPieces={filteredPieces} />
+				<Outlet context={{ filteredPieces, setSearch }} />
+			</Box>
+		</Box>
 	);
 }
 
