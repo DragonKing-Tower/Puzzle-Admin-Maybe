@@ -3,7 +3,7 @@ import { useParams, useOutletContext } from "react-router-dom";
 
 function Pic() {
 	const { id } = useParams();
-	const { filteredPieces, setSearch } = useOutletContext();
+	const { filteredPieces, setSearch,setPieces } = useOutletContext();
 	const peice = filteredPieces.find((peice) => peice.id === id);
 
 	if (!peice) {
